@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" href="styles.css"> 
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                background-color: #f4f4f4;
+                font-family: Arial, sans-serif;
+            }
+            header {
+                background-color: #333;
+                color: white;
+                padding: 1em;
+                text-align: center;
+            }
+            nav {
+                display: flex;
+                justify-content: center;
+                background-color: #444;
+                padding: 0.5em;
+            }
+            nav a {
+                color: white;
+                text-decoration: none;
+                margin: 0 15px;
+            }
+            main {
+                padding: 20px;
+                text-align: center;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            #login-box {
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        #login-box label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        #login-box input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+        #login-box #login {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            border: none;
+            cursor: pointer;
+        }
+        </style>
+</head>
+<body>
+    <!-- Include the header -->
+    <include src="header.html"></include>
+    
+    <main>
+        <h2>Login</h2>
+        <div id="login-box">
+            <!-- <label for="User name">Email:</label>
+            <input type="text" id="username" name="username"  placeholder="username" required><br> -->
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"  placeholder="E-mail" required><br>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Password"><br>
+            
+            <input type="submit" id="login" name="login" value="Login">
+        </div>
+        <p>New user? <a href="/signup.html">Create an account</a></p>
+    </main>
+</body>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
+    import { getDatabase , update, ref} from "https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDwtb1ugM6UkkfKUAouxvxTBiT3ZnmY68c",
+      authDomain: "authentication-app-9a156.firebaseapp.com",
+      databaseURL: "https://authentication-app-9a156-default-rtdb.firebaseio.com",
+      projectId: "authentication-app-9a156",
+      storageBucket: "authentication-app-9a156.appspot.com",
+      messagingSenderId: "80568980792",
+      appId: "1:80568980792:web:0bb7e89fc5b738b3501dcd"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const auth = getAuth();
+    login.addEventListener('click',(e) => {
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+        const auth = getAuth();
+        signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            // ...
+            const dt = new Date();
+            update(ref(database,'users/' + user.uid),{
+                    last_login : dt
+                })
+            alert("User Login Successful!");
+            window.open('index.html',"_self");
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            alert(errorMessage);
+        });
+    });
+  </script>
+</html>

@@ -1,0 +1,237 @@
+/* The rest of your existing styles */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('background-image.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: Arial, sans-serif;
+}
+
+.destination-card {
+    border: 1px solid #ddd;
+    margin: 20px;
+    padding: 20px;
+    background-color: white;
+    animation: fadeIn 1s ease-out;
+}
+
+.destination-card:hover {
+    transform: scale(1.05);
+}
+
+button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    animation: none;
+}
+
+button:hover {
+    background-color: #444;
+}
+
+/* footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em;
+}
+
+.social-media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-media a {
+    margin: 0 10px;
+}
+
+.social-media img {
+    width: 30px; 
+    height: auto;
+}
+
+.social-media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-button {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    width: 30px;
+    height: 30px;
+    text-decoration: none;
+    border-radius: 100%;
+    background: #fff;
+    text-align: center;
+}
+
+.social-button::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    display: block;
+    width: 0;
+    height: 0;
+    border-radius: 100%;
+    transition: 0.3s;
+}
+.social-button:focus, .social-button:hover {
+    color: #fff;
+}
+.social-button:focus::after, .social-button:hover::after {
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+    margin-left: calc(-50% - 1px);
+}
+.social-button i, .social-button svg {
+    position: relative;
+    z-index: 1;
+    transition: 0.3s;
+}
+.social-button i {
+    font-size: 20px;
+}
+.social-button svg {
+    height: 40%;
+    width: 40%;
+}
+.social-button--instagram {
+    color: #3f729b;
+    background-color: white;
+    border: none;
+    padding: 0;
+    margin: 0 5px;
+    font-size: 24px;
+}
+.social-button--youtube {
+    color: #ff0000; 
+    background-color: white;
+    border: none;
+    padding: 0;
+    margin: 0 5px;
+    font-size: 24px;
+}
+
+.social-button--facebook {
+    color: #3b5999;
+}
+.social-button--facebook::after {
+    background: #3b5999;
+}
+
+.social-button--twitter {
+    color: #55acee;
+}
+.social-button--twitter::after {
+    background: #55acee;
+}
+.social-button--instagram {
+    color: #e4405f;
+}
+.social-button--instagram::after {
+    background: #e4405f;
+}
+.social-button--youtube::after{
+    color: white;
+    background-color: #ff0000;
+} */
+
+footer {
+    display: flex;
+    justify-content: center;
+    background: #000;
+}
+
+footer p {
+    color: white;
+}
+
+ul {
+    position: relative;
+    display: flex;
+}
+ul li {
+    position: relative;
+    list-style: none;
+    margin: 0 20px;
+    cursor: pointer;
+}
+ul li a {
+    text-decoration: none;
+}
+ul li a .fa-brands {
+    font-size: 2em;
+    color: #222;
+}
+ul li a::before {
+    font-family: "FontAwesome";
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 2em;
+    height: 0;
+    overflow: hidden;
+    transition: 0.5s ease-in-out;
+}
+
+ul li:nth-child(1) a::before {
+    content: "\f16d";
+    background-image: linear-gradient(45deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-bottom: 4px solid #dc2743;
+}
+ul li:nth-child(2) a::before {
+    content: "\f09a";
+    color: #3b5999;
+    margin: 0 2px;
+    border-bottom: 4px solid #3b5999;
+}
+ul li:nth-child(3) a::before {
+    content: "\f099";
+    color: #1DA1F2;
+    border-bottom: 4px solid #1DA1F2;
+}
+ul li:nth-child(4) a::before {
+    content: "\f167";
+    color: #FF0000;
+    border-bottom: 4px solid #FF0000;
+}
+ul li:hover a::before {
+    height: 100%;
+}
